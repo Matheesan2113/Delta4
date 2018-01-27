@@ -1,0 +1,24 @@
+{
+  "name": "delta4",
+  "version": "1.0.0",
+  "description": "deltahacks hackathon 2018",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matheesan2113/Delta4.git"
+  },
+  "author": "ragulan, matheesan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matheesan2113/Delta4/issues"
+  },
+  "homepage": "https://github.com/Matheesan2113/Delta4#readme"
+}
