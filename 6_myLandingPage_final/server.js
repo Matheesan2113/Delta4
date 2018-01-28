@@ -56,6 +56,8 @@ app.get("/register", function(req, res) {
 
 //hanle sign up logic
 app.post("/register", function(req, res) {
+    if(req.body.username == "mathee25@hotmail.com") {
+    }
     var newUser = new User ({username: req.body.username, email: req.body.email});
     User.register(newUser, req.body.password, function(err, user){
         if(err) {
@@ -63,7 +65,7 @@ app.post("/register", function(req, res) {
             return res.redirect("/register");
         }
         passport.authenticate("local")(req, res, function() {
-            res.redirect("/login");
+            res.redirect("/dashboard");
         });
     });
 });
