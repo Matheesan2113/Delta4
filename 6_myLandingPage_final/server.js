@@ -1,5 +1,11 @@
 var express = require('express');
 var app = express();
+// import entire SDK
+var AWS = require('aws-sdk');
+// import AWS object without services
+var AWS = require('aws-sdk/global');
+// import individual service
+var S3 = require('aws-sdk/clients/s3');
 
 app.use(express.static(__dirname + "/public"));
 
