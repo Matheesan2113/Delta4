@@ -30,6 +30,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+app.engine('html', require('ejs').renderFile);
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
@@ -37,7 +38,7 @@ app.use(function(req, res, next){
 });
 
 app.get('/', function (request,response){
-response.render('index.ejs');
+response.render('index.html');
 });
 
 app.get('/dashboard', function(request, response){
