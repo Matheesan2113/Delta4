@@ -30,7 +30,6 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-app.engine('html', require('ejs').renderFile);
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
@@ -38,7 +37,7 @@ app.use(function(req, res, next){
 });
 
 app.get('/', function (request,response){
-response.render('index.html');
+response.render('index.ejs');
 });
 
 app.get('/dashboard', function(request, response){
@@ -76,6 +75,11 @@ app.post("/login", passport.authenticate("local",
 
 });
 
+//logout
+app.get("/logout", function(req,res) {
+    req.logout();
+    res.redirect("/");
+})
 app.listen(3000,function(){
     console.log("First API running on port 3000");
     console.log(__dirname);
