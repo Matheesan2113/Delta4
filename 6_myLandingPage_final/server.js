@@ -37,18 +37,21 @@ app.use(function(req, res, next){
 });
 
 app.get('/', function (request,response){
-response.render('index.ejs');
+    var background = request.url == "/" ? "home" : "";
+    response.render('index.ejs', {background: background});
 });
 
 app.get('/dashboard', function(request, response){
-response.render('main.ejs');    
+    var background = request.url == "/" ? "home" : "";
+    response.render('main.ejs', {background: background});    
 });
 
 //AUTH ROUTES
 
 //show register form
 app.get("/register", function(req, res) {
-    res.render("register.ejs");
+    var background = req.url == "/" ? "home" : "";
+    res.render("register.ejs", {background: background});
 });
 
 //hanle sign up logic
@@ -57,7 +60,7 @@ app.post("/register", function(req, res) {
     User.register(newUser, req.body.password, function(err, user){
         if(err) {
             console.log(err);
-            return res.render("register");
+            return res.redirect("/register");
         }
         passport.authenticate("local")(req, res, function() {
             res.redirect("/login");
@@ -66,7 +69,8 @@ app.post("/register", function(req, res) {
 });
 
 app.get("/login", function(req, res) {
-    res.render("login.ejs");
+    var background = req.url == "/" ? "home" : "";
+    res.render("login.ejs", {background: background});
 });
 
 app.post("/login", passport.authenticate("local", 
